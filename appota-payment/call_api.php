@@ -27,20 +27,15 @@ class Appota_CallApi
     public function getPaymentUrl($params)
     {
         // build api url
-        $api_url = $this->API_URL . $this->VERSION . '/payment/ecommerce?api_key=' . $this->API_KEY . '&lang=' . $this->LANG;
-
-        if (!$this->SECRET_KEY) {
+        $api_url = $this->API_URL.$this->VERSION.'/payment/ecommerce?api_key='.$this->API_KEY.'&lang='.$this->LANG;
+        
+        if(!$this->SECRET_KEY) {
             return array(
                 'error' => 111,
                 'message' => 'Website chưa nhập api secret key. Không thể thực hiện thanh toán!'
             );
         }
-        if (!$this->hasCurl()) {
-            return array(
-                'error' => 102,
-                'message' => 'Kiểm tra curl trên server'
-            );
-        }
+
         // request get payment url
         $result = $this->makeRequest($api_url, $params, $this->METHOD);
         return json_decode($result, true);
@@ -59,38 +54,24 @@ class Appota_CallApi
         }
     }
 
-
-    /**
-     * Kiểm tra xem server có hỗ trợ curl hay không.
-     * @return boolean
-     */
-    private function hasCurl()
-    {
-        return function_exists('curl_version');
-    }
-
-
-    private function createOpenSSLSignature($data, $private_key)
-    {
+    private function createOpenSSLSignature($data, $private_key) {
         // compute signature
         openssl_sign($data, $signature, $private_key, OPENSSL_ALGO_SHA1);
         return base64_encode($signature);
     }
-
-    private function createSignature($data, $secret_key)
-    {
+    
+    private function createSignature($data, $secret_key) {
         $str_data = serialize($data) . $secret_key;
         $signature = hash('sha256', $str_data);
         return $signature;
     }
-
-    private function verifySignature($data, $signature, $secret_key)
-    {
+    
+    private function verifySignature($data, $signature, $secret_key) {
         $str_data = serialize($data) . $secret_key;
         $compare_signature = hash('sha256', $str_data);
-        if ($compare_signature == $signature) {
+        if($compare_signature == $signature) {
             return true;
-        } else {
+        }else {
             return false;
         }
     }
@@ -117,29 +98,36 @@ M1lQGWg1Ezua7THoyQIDAQAB
      */
     private function makeRequest($url, $params, $method = 'POST')
     {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_POST, TRUE);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60); // Time out 60s
-        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // connect time out 5s
+        $result = wp_remote_post($url, array(
+            'method' => $method,
+            'timeout' => 60,
+            'body' => $params
+        ));
+        return $result['body'];
 
-        $result = curl_exec($ch);
-        $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        if (curl_error($ch)) {
-            return false;
-        }
-
-        if ($status != 200) {
-            curl_close($ch);
-            return false;
-        }
-        // close curl
-        curl_close($ch);
-
-        return $result;
+//        $ch = curl_init($url);
+//        curl_setopt($ch, CURLOPT_POST, TRUE);
+//        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+//        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+//        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+//        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 60); // Time out 60s
+//        curl_setopt($ch, CURLOPT_TIMEOUT, 60); // connect time out 5s
+//
+//        $result = curl_exec($ch);
+//        $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+//        if (curl_error($ch)) {
+//            return false;
+//        }
+//
+//        if ($status != 200) {
+//            curl_close($ch);
+//            return false;
+//        }
+//        // close curl
+//        curl_close($ch);
+//
+//        return $result;
     }
-
+	
 }

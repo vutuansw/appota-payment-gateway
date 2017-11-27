@@ -9,14 +9,13 @@
  * - Gửi thông tin thanh toán tới appotapay.com để xử lý việc thanh toán.
  * - Xác thực tính chính xác của thông tin được gửi về từ appotapay.com
  * Version: 1.0
- * Author: tieulonglanh
+ * Author: Appota
  * Author URI: http://appotapay.com/
  * License: Appotapay.com
  */
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
 include(WP_PLUGIN_DIR . '/appota-payment/call_api.php');
-
 
 if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
     //Create class after the plugins are loaded
@@ -174,7 +173,11 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
             public function admin_options()
             {
                 ?>
-                <h3><?php _e('Thanh toán Appota Pay', 'woocommerce'); ?></h3>
+                <h3>
+                    <?php _e('Thanh toán Appota Pay', 'woocommerce'); ?>
+
+                    <div class="pull-right">Hướng dẫn cấu hình hệ thống chi tiết <a href="https://github.com/appotapay/appotapay-wordpress">tại đây</a></div>
+                </h3>
                 <strong><?php _e('Đảm bảo an toàn tuyệt đối cho mọi giao dịch.', 'woocommerce'); ?></strong>
                 <?php if ($this->is_valid_for_use()) : ?>
                 <table class="form-table">
@@ -286,6 +289,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                 // Gọi resful API của Appota Pay
                 $call_api = new Appota_CallApi($config);
                 $result = $call_api->getPaymentUrl($params);
+//                echo '<pre>';print_r($result);die;
                 return $result;
             }
 
@@ -303,13 +307,16 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                     $check_valid_order = $receiver->checkValidOrder($_GET);
                     if ($check_valid_order['error_code'] == 0) {
                         $order_id = (int)$_GET['order_id'];
-                        $transaction_id = (int)$_GET['transaction_id'];
+                        $transaction_id = $_GET['transaction_id'];
                         $total_amount = floatval($_GET['amount']);
                         $order = new WC_Order($order_id);
                         $comment_status = 'Thực hiện thanh toán thành công với đơn hàng ' . $order_id . '. Giao dịch hoàn thành. Cập nhật trạng thái cho đơn hàng thành công';
                         $order->add_order_note(__($comment_status, 'woocommerce'));
                         $order->payment_complete();
                         $order->update_status('completed');
+
+                        $order->update_meta_data('transaction_id', $transaction_id);
+                        update_post_meta($order_id, '_appotapay_transaction_id', $transaction_id);
                         $woocommerce->cart->empty_cart();
                         $order_status = 'complete';
 
@@ -354,6 +361,12 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
 
         }
 
+    }
+
+    add_action( 'woocommerce_admin_order_data_after_order_details', 'appotapay_transaction_id_order_meta', 10, 1 );
+
+    function appotapay_transaction_id_order_meta($order){
+        echo '<p class="form-field form-field-wide"><label>'.__('Appotapay Transaction id').': </label>' . get_post_meta( $order->id, 'appotapay_transaction_id', true ). '</p>';
     }
 
 } else {
