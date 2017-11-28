@@ -9,7 +9,7 @@
 
 define('DIR_LOG', 'logs/');
 define('FILE_NAME', 'apr'); //Phần mở rộng của file là .log
-echo 111111111;die;
+
 Class WC_Appota_Logger extends WC_Gateway_Appota_Payment {
 
     protected $my_log_file;
