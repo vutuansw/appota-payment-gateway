@@ -316,7 +316,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                         $order->update_status('completed');
 
                         $order->update_meta_data('transaction_id', $transaction_id);
-                        update_post_meta($order_id, '_appotapay_transaction_id', $transaction_id);
+                        update_post_meta($order_id, 'appotapay_transaction_id', $transaction_id);
                         $woocommerce->cart->empty_cart();
                         $order_status = 'complete';
 
