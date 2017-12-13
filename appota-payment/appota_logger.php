@@ -7,8 +7,7 @@
  * Ghi thông tin vào file log
  */
 
-define('DIR_LOG', 'logs/');
-define('FILE_NAME', 'apr'); //Phần mở rộng của file là .log
+define('DIR_LOG', WP_PLUGIN_DIR . '/appota-payment/logs/');
 
 Class WC_Appota_Logger extends WC_Gateway_Appota_Payment {
 
@@ -16,12 +15,12 @@ Class WC_Appota_Logger extends WC_Gateway_Appota_Payment {
     public function __construct() {
         parent::__construct();
         $apr_file_log = $this->getAPRFileLog();
-	$this->my_log_file = DIR_LOG . $apr_file_log . "-" . date("d-m") . ".log";
-	$this->isFileORDirExist(DIR_LOG, $this->my_log_file);
+        $this->my_log_file = DIR_LOG . $apr_file_log . "-" . date("d-m") . ".log";
+        $this->isFileORDirExist(DIR_LOG, $this->my_log_file);
     }
-    
+
     /**
-     * 
+     *
      * @param type $message
      */
     public function writeLog($message) {

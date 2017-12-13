@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Appota Payment Gateway
+ * Plugin Name: Appota Payment
  * Plugin URI: appotapay.com
  * Description: Thanh toán với Appota Payment
  * - Tích hợp thanh toán qua appotapay.com cho các website bán hàng có đăng ký API.
@@ -70,8 +70,6 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                 $this->appota_api_key = $this->get_option('appota_api_key');
                 // Lấy api secret được lưu trong cấu hình
                 $this->appota_api_secret = $this->get_option('appota_api_secret');
-                // Lấy api secret được lưu trong cấu hình
-                $this->appota_api_private_key = $this->get_option('appota_api_secret');
                 // Lấy tên log file.
                 $this->appota_log_file = $this->get_option('appota_log_file');
 
@@ -131,13 +129,6 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                         'title' => __('Appota API Secret', 'woocommerce'),
                         'type' => 'text',
                         'description' => __('API Secret của tài khoản.', 'woocommerce'),
-                        'default' => '',
-                        'desc_tip' => true,
-                    ),
-                    'appota_api_private_key' => array(
-                        'title' => __('Appota API Private Key', 'woocommerce'),
-                        'type' => 'textarea',
-                        'description' => __('Private Key để verify khi gọi API lên hệ thống.', 'woocommerce'),
                         'default' => '',
                         'desc_tip' => true,
                     ),
@@ -284,7 +275,6 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                 $config['lang'] = $this->lang;
                 $config['secret_key'] = $this->appota_api_secret;
                 $config['ssl_verify'] = $this->ssl_verify;
-                $config['private_key'] = $this->appota_api_private_key;
 
                 // Gọi resful API của Appota Pay
                 $call_api = new Appota_CallApi($config);
