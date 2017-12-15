@@ -7,7 +7,7 @@
  * Ghi thông tin vào file log
  */
 
-define('DIR_LOG', WP_PLUGIN_DIR . '/appota-payment/logs/');
+define('DIR_LOG', plugin_dir_path(__FILE__) . 'logs/');
 
 Class WC_Appota_Logger extends WC_Gateway_Appota_Payment {
 
@@ -21,7 +21,7 @@ Class WC_Appota_Logger extends WC_Gateway_Appota_Payment {
 
     /**
      *
-     * @param type $message
+     * @param string $message
      */
     public function writeLog($message) {
         $file_log = $this->my_log_file;
@@ -45,8 +45,8 @@ Class WC_Appota_Logger extends WC_Gateway_Appota_Payment {
 
     /**
      * Hàm kiểm tra sự tồn tại của file log. Thực hiện tạo mới nếu file không tồn tại
-     * @param $dir      Tên thư mục
-     * @param $fileName Tên file
+     * @param $dir      string Tên thư mục
+     * @param $fileName string Tên file
      */
     private function isFileORDirExist($dir, $fileName) {
         if ($dir != '') {

@@ -15,7 +15,7 @@
  */
 if (!defined('ABSPATH'))
     exit; // Exit if accessed directly
-include(WP_PLUGIN_DIR . '/appota-payment/call_api.php');
+include(plugin_dir_path(__FILE__) . 'call_api.php');
 
 if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
     //Create class after the plugins are loaded
