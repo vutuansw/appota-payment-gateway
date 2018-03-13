@@ -1,11 +1,12 @@
 === Appota payment ===
-Contributors: appotapay
-Donate link: https://appotapay.com/
+
+Contributors: appotapay, wedesignwebuild
+Donate link: https://github.com/vutuansw/appota-payment-gateway
 Tags: woocommerce payment, appotapay, ecommerce, e-commerce, checkout, payment
 Requires at least: 4.0
 Tested up to: 4.9
 Requires PHP: >= 5.4
-Stable tag: 4.3
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +24,7 @@ Appota payment chỉ chấp nhận thanh toán bằng VNĐ(đ)
 == Installation ==
 
 1. Cài đặt woocomerce
-2. Tải tập tin plugin tới đường dẫn  `/wp-content/plugins/appota-payment`, hoặc cài đặt ở màn hình Wordpress plugins
+2. Tải tập tin plugin tới đường dẫn  `/wp-content/plugins/appota-payment-gateway`, hoặc cài đặt ở màn hình WordPress plugins
 3. Kích hoạt plugin ở màn hình 'Plugins' trên Wordpress
 4. Kích hoạt và cấu hình `Appota payment` trong woocommerce
 
@@ -31,7 +32,12 @@ Appota payment chỉ chấp nhận thanh toán bằng VNĐ(đ)
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.1 =
+* Move log folder to uploads folder
+* Fix bugs cannot call methods from WC_Order
+* Support text-domain translate string
+
+= 1.0.0 =
 * Initial release
 
 == Upgrade Notice ==

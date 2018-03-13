@@ -1,11 +1,12 @@
-# Appotapay wordpress plugin
-## Appota Pay Extension Wordpress 
+# Appota Payment Gateway
+## Appota Payment Gateway Extension for Wordpress 
 Tài liệu hướng dẫn sử dụng plugin thanh toán Appota Payment  
-# I.	Cài đặt Woocomerce  
 
-Để sử dụng được wordpress plugin Appota Payment, chúng ta cần phải cài đặt Plugin Woocomerce.  
+# I.	Cài đặt WooComerce  
 
-Để cài đặt plugin hỗ trợ thương mại điện tử Woocomerce, trong menu bên trái bộ quản trị Wordpress, chọn “Gói mở rộng” -> “Cài mới”  
+Để sử dụng được wordpress plugin Appota Payment, chúng ta cần phải cài đặt Plugin WooComerce.  
+
+Để cài đặt plugin hỗ trợ thương mại điện tử WooComerce, trong menu bên trái bộ quản trị Wordpress, chọn “Gói mở rộng” -> “Cài mới”  
 
 Trong giao diện tìm kiếm plugins, gõ “WooCommerce” để tìm kiếm plugin và cài đặt.  
  
@@ -14,7 +15,7 @@ Trong giao diện tìm kiếm plugins, gõ “WooCommerce” để tìm kiếm p
 
 Để cài đặt Appota Payment plugin, truy cập menu “Gói mở rộng” -> “Cài mới”.  
 
-Trong giao diện cài mới, click vào button “Tải Plugin lên”. Để download plugin Appota Payment dành cho wordpress, bạn có thể tải trên Github theo đường dẫn sau: https://github.com/appotapay/appotapay-wordpress/archive/master.zip  
+Trong giao diện cài mới, click vào button “Tải Plugin lên”. Để download plugin Appota Payment dành cho wordpress, bạn có thể tải trên Github theo đường dẫn sau: https://github.com/vutuansw/appotapay-wordpress/archive/master.zip  
  
 Trong giao diện tải, click vào nút “Browse” để chọn tới file plugin cần tải lên -> Chọn file nén chứa plugin -> Chọn “Cài đặt”  
  
@@ -23,7 +24,7 @@ Tiếp tục chọn “Kích hoạt plugin” sau khi đã cài xong
 Nếu trong danh sách plugin hiện Appota Payment plugin là quá trình cài đặt đã thành công.  
  
 ## 2.	Cấu hình
-Để cấu hình cho Appota Payment, chọn “Woocomerce” -> “Cài đặt”.  
+Để cấu hình cho Appota Payment, chọn “WooCommerce” -> “Cài đặt”.  
  
 Trong tab “Thanh Toán”, chọn vào “Appota Payment”  
  

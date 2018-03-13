@@ -1,0 +1,210 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Appota Payment Gateway\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-13 09:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: includes/APG_Receiver.php:50
+#, php-format
+msgid " Không nhận được mã đơn hàng nào : %s"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:87
+msgid "API Key của tài khoản."
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:94
+msgid "API Secret của tài khoản."
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:85
+msgid "Appota API Key"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:92
+msgid "Appota API Secret"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:297
+#, php-format
+msgid ""
+"Appota Pay xác nhận đơn hàng: [Order ID: %s] - [Transaction ID: %s] - [Total:"
+" %s] - [%s]"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:16 includes/APG_Payment_Gateway.php:63
+msgid "Appota Payment"
+msgstr ""
+
+#. Name of the plugin
+msgid "Appota Payment Gateway"
+msgstr ""
+
+#: appota-payment-gateway.php:53
+msgid "Appotapay Transaction ID"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:73
+msgid "Cấu hình tài khoản"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:149
+msgid "Gateway Disabled"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/vutuansw/appota-payment-gateway"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://profiles.wordpress.org/wedesignwebuild"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:312
+msgid "Hãy thanh toán lại!"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:132
+#, php-format
+msgid "Hướng dẫn cấu hình hệ thống chi tiết %s"
+msgstr ""
+
+#: appota-payment-gateway.php:62
+msgid ""
+"Hệ thống chưa cài đặt hoặc kích hoạt plugin WooCommerce! Bạn cần cài đặt "
+"hoặc kích hoạt WooCommerce để sử dụng plugin Appota Payment"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:179
+msgid "Không nhận được thông tin trả về!"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:69
+msgid "Mô tả của phương thức thanh toán bạn muốn hiển thị cho người dùng."
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:67
+msgid "Mô tả phương thức thanh toán"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:181 includes/APG_Payment_Gateway.php:189
+msgid "Payment error:"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:18
+msgid ""
+"Phương thức thanh toán an toàn với chi phí thấp qua cổng thanh toán "
+"Appotapay.com"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:149
+msgid ""
+"Phương thức thanh toán Appota Pay chỉ hỗ trợ tiền Việt Nam Đồng trên gian "
+"hàng của bạn. Xin hãy đổi loại tiền thanh toán thành Việt Nam Đồng"
+msgstr ""
+
+#: includes/APG_Receiver.php:27
+msgid "Sai signature gửi đến. Không thể thực hiện thanh toán!"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:54
+msgid "Sử dụng phương thức"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:70
+msgid ""
+"Thanh toán an toàn với Appota Payment. Thực hiện thanh toán với thẻ cào hoặc "
+"tài khoản ngân hàng trực tuyến"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:129
+msgid "Thanh toán Appota Pay"
+msgstr ""
+
+#: includes/APG_Receiver.php:71
+#, php-format
+msgid "Thanh toán tạm giữ: %s"
+msgstr ""
+
+#. Description of the plugin
+msgid "Thanh toán với Appota Payment"
+msgstr ""
+
+#: includes/APG_Receiver.php:33
+msgid "Thông tin request thành công!"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:288
+#, php-format
+msgid ""
+"Thực hiện thanh toán thành công với đơn hàng %s. Giao dịch hoàn thành. Cập "
+"nhật trạng thái cho đơn hàng thành công"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:60
+msgid "Tiêu đề"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:62
+msgid "Tiêu đề của phương thức thanh toán bạn muốn hiển thị cho người dùng."
+msgstr ""
+
+#: includes/APG_Receiver.php:78
+#, php-format
+msgid "Trạng thái giao dịch:%s chưa thành công với mã đơn hàng : %s"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:78
+msgid "Tên cửa hàng"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:80
+msgid "Tên cửa hàng của người bán hàng sử dụng cổng thanh toán Appota Pay."
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:99
+msgid "Tên file lưu log"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:101
+#, php-format
+msgid ""
+"Tên file lưu trữ log trong quá trình thực hiện thanh toán bằng cổng Appota "
+"Payment, truy cập file log <code>uploads/appota-payment-gateway/appota-"
+"payment-%s.log</code>"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:132
+msgid "tại đây"
+msgstr ""
+
+#. Author of the plugin
+msgid "wedesignwebuild"
+msgstr ""
+
+#: includes/APG_Receiver.php:88
+msgid "Đơn hàng hợp lệ"
+msgstr ""
+
+#: includes/APG_Receiver.php:60
+#, php-format
+msgid "Đơn hàng với mã đơn : %s không tồn tại trên hệ thống"
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:136
+msgid "Đảm bảo an toàn tuyệt đối cho mọi giao dịch."
+msgstr ""
+
+#: includes/APG_Payment_Gateway.php:56
+msgid "Đồng ý"
+msgstr ""
