@@ -44,4 +44,14 @@ Trong tab “Thanh Toán”, chọn vào “Appota Payment”
 Ra trang ngoài, đặt hàng thử để kiểm tra plugin có hoạt động hay không.  
 
 Nếu hiển thị trong checkout có phương thức Appota Payment kèm theo logo Appota thì đã gắn phương thức thanh toán thành công.  
+## Change logs
+ 
+#### 1.0.1
+* Move log folder to uploads folder
+* Fix bugs cannot call methods from WC_Order
+* Support text-domain translate string
+
+#### 1.0.0
+* Initial release
+
  
