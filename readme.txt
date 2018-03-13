@@ -34,7 +34,8 @@ Appota payment chỉ chấp nhận thanh toán bằng VNĐ(đ)
 
 = 1.0.1 =
 * Move log folder to uploads folder
-* Fix bugs cannot call methods from WC_Order
+* Fix bug cannot call methods from WC_Order
+* Fix bug get receive_payment_url undefined index [message] in array results
 * Support text-domain translate string
 
 = 1.0.0 =

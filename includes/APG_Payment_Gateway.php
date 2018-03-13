@@ -127,14 +127,14 @@ class APG_Payment_Gateway extends WC_Payment_Gateway {
 		?>
 		<h3>
 			<?php echo esc_html__( 'Thanh toán Appota Pay', 'appota-payment-gateway' ); ?>
-			
+
 			<p class="pull-right">
 				<?php printf( __( 'Hướng dẫn cấu hình hệ thống chi tiết %s', 'appota-payment-gateway' ), '<a href="https://github.com/appotapay/appotapay-wordpress">' . __( 'tại đây', 'appota-payment-gateway' ) . '</a>' ) ?></a>
 			</p>
 		</h3>
 
 		<strong><?php echo esc_html__( 'Đảm bảo an toàn tuyệt đối cho mọi giao dịch.', 'appota-payment-gateway' ); ?></strong>
-		
+
 		<?php if ( $this->is_valid_for_use() ) : ?>
 			<table class="form-table">
 				<?php
@@ -159,8 +159,14 @@ class APG_Payment_Gateway extends WC_Payment_Gateway {
 	 * @since 1.1
 	 */
 	public function is_error( $thing ) {
-		if ( is_array( $thing ) && isset( $thing['error'] ) && $thing['error']['code'] != 0 ) {
-			return true;
+
+		if ( is_array( $thing ) ) {
+			$error1 = isset( $thing['error']['code'] ) && $thing['error']['code'] != 0;
+			$error2 = isset( $thing['error_code'] ) && $thing['error_code'] != 0;
+
+			if ( $error1 || $error2 ) {
+				return true;
+			}
 		}
 
 		return false;
@@ -185,17 +191,18 @@ class APG_Payment_Gateway extends WC_Payment_Gateway {
 		// Nếu có lỗi, hiện thông báo lỗi thanh toán
 		if ( $this->is_error( $result ) ) {
 
-			$logger->writeLog( 'Failure: ' . $result['error']['message'] );
-			wc_add_notice( __( 'Payment error:', 'appota-payment-gateway' ) . " " . $result['error']['message'], 'error' );
+			$message = isset( $result['error']['message'] ) ? $result['error']['message'] : $result['message'];
+
+			$logger->writeLog( 'Failure: ' . $message );
+			wc_add_notice( __( 'Payment error:', 'appota-payment-gateway' ) . ' ' . $message, 'error' );
 			return;
 		}
-
-
+		
 		// Nếu không có lỗi, chuyển hướng url sang trang thanh toán của Appota
 		$appota_payment_url = $result['data']['payment_url'];
-		
+
 		$logger->writeLog( "Success: Redirect Payment Url -> " . $appota_payment_url );
-		
+
 		return array(
 			'result' => 'success',
 			'redirect' => $appota_payment_url
@@ -313,7 +320,7 @@ class APG_Payment_Gateway extends WC_Payment_Gateway {
 			wp_redirect( $redirect_url );
 		}
 	}
-	
+
 	public function auto_reverse_proxy_pre_comment_user_ip() {
 
 		$REMOTE_ADDR = $_SERVER['REMOTE_ADDR'];
@@ -324,7 +331,7 @@ class APG_Payment_Gateway extends WC_Payment_Gateway {
 				$REMOTE_ADDR = trim( $X_FORWARDED_FOR[0] );
 			}
 		}
-		
+
 		/*
 		 * Some php environments will use the $_SERVER['HTTP_X_FORWARDED_FOR'] 
 		 * variable to capture visitor address information.
